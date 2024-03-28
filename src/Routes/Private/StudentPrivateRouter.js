@@ -32,9 +32,9 @@ export const StudentPrivateRouter = ({ children, authenticated, decodedToken, ..
                     <Link onClick={() => setOpen(!open)} to='/student-dashboard/curriculum' state={{ curriculum: decodedToken.curriculumId }} className='block p-3 hover:underline'><FontAwesomeIcon icon={faBook} className='fas fa-lg me-4' /> Course</Link>
                     <Link onClick={() => setOpen(!open)} to='/student-dashboard/tutor' className='block p-3 hover:underline'> <FontAwesomeIcon icon={faChalkboardUser} className='fas fa-lg me-4' />Tutor</Link>
                     <Link onClick={() => setOpen(!open)} to='/student-dashboard/batch' className='block p-3 hover:underline'><FontAwesomeIcon icon={faUserGroup} className='fas fa-lg me-4' /> Batch</Link>
-                    <Link onClick={() => setOpen(!open)} to='/student-dashboard/batch-paper-solution' className='block p-3 hover:underline'><FontAwesomeIcon icon={faUserGroup} className='fas fa-lg me-4' /> Batch (Paper Solution)</Link>
-                    <Link onClick={() => setOpen(!open)} to='/student-dashboard/all-exam' className='block p-3 hover:underline'> <FontAwesomeIcon icon={faBookOpenReader} className='fas fa-lg me-4' /> All Exam</Link>
-                    <Link onClick={() => setOpen(!open)} to='/student-dashboard/assignment' className='block p-3 hover:underline'> <FontAwesomeIcon icon={faCircleInfo} className='fas fa-lg me-4' /> Assignment Help</Link>
+                    <Link onClick={() => setOpen(!open)} to='/student-dashboard/batch-paper-solution' className='block p-3 hover:underline'><FontAwesomeIcon icon={faUserGroup} className='fas fa-lg me-4' /> Paper Solution</Link>
+                    <Link onClick={() => setOpen(!open)} to='/student-dashboard/all-exam' className='block p-3 hover:underline'> <FontAwesomeIcon icon={faBookOpenReader} className='fas fa-lg me-4' /> Exam</Link>
+                    <Link onClick={() => setOpen(!open)} to='/student-dashboard/assignment' className='block p-3 hover:underline'> <FontAwesomeIcon icon={faCircleInfo} className='fas fa-lg me-4' /> Assignment</Link>
                     <Link onClick={() => setOpen(!open)} to='/student-dashboard/history' className='block p-3 hover:underline'> <FontAwesomeIcon icon={faClockRotateLeft} className='fas fa-lg me-4' /> History</Link>
                     <Link onClick={() => setOpen(!open)} to='/student-dashboard/payment' className='block p-3 hover:underline'> <FontAwesomeIcon icon={faMoneyBill1Wave} className='fas fa-lg me-4' />Payment</Link>
                 </div>
