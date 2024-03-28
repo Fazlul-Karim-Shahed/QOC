@@ -37,12 +37,12 @@ export const StudentAllExam = (props) => {
     }, [props])
 
     let examShow
-    if (exam.length === 0) { examShow = <div></div> }
+    if (exam.length === 0) { examShow = <div className='text-center font-bold text-xl col-span-full p-20'> Yoo!! No exam today</div> }
     else {
         examShow = exam.map(item => {
 
             return (
-                <div className='card  glass my-5 hover:shadow-lg bg-sky-700 text-white'>
+                <div className='card  glass my-5 hover:shadow-lg bg-sky-700 hover:bg-sky-600 text-white'>
                     <div className='text-center mb bg-zinc-700 rounded-t-lg p-2 shadow-lg'>Participants - {item.participants ? item.participants.length : 0}</div>
                     <Link aria-disabled to={'/student-dashboard/exam'} state={{ exam: item }} className='card-body'>
 
