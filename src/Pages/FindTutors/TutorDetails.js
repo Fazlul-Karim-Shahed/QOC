@@ -1,7 +1,7 @@
 import bufferToDataUrl from 'buffer-to-data-url'
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { getTeacher } from '../../Api/Admin/TeacherApi'
 import { getAllBatchApi, joiningBatchApi } from '../../Api/Student/BatchApi'
 import Spinner from '../../components/Spinner'
@@ -83,7 +83,7 @@ export const TutorDetails = (props) => {
                             <span class="inline-block rounded-full px-2 py-1 text-center text-xs font-bold text-white bg-purple-500">Past Paper Solutions Included</span>
                         </template>
 
-                        {props.authenticated && props.decodedToken.role === "student" && <button href="" onClick={()=>joinBatch(item)} class="btn inline-block rounded text-center text-white bg-blue-500 hover:bg-blue-700" >Join Now</button>}
+                        {props.authenticated && props.decodedToken.role === "student" ? <button href="" onClick={() => joinBatch(item)} class="btn inline-block rounded text-center text-white bg-blue-500 hover:bg-blue-700" >Join Now</button> : <div className='text-center text-sm w-full font-bold text-red-400 my-5'>Be a student to join. <Link to='/login' className=' inline underline'>Login now</Link> </div>}
                     </div>
                 </div>
             )
