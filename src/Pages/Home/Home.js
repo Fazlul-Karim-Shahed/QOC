@@ -105,7 +105,7 @@ function Home(props) {
             </p>
             <div className="text-[2F2F2F] mt-10">
               <button className="bg-normal hover:bg-normalH text-white text-xs py-3 px-6 rounded-full mr-4">
-                <Link to={props.authenticated ? `/${props.decodedToken.role}-dashboard` : '/sign'}>Get Started</Link>
+                <Link to={props.authenticated ? `/${props.decodedToken.role}-dashboard` : '/signup'}>Get Started</Link>
               </button>
               <button className="bg-[#FBF1F2] text-[#92222A] font-semibold hover:bg-transparent   text-xs py-3 px-6 rounded-full border border-[#F7E8E9]">
                 <Link to={'/request-demo'}>Request Demo</Link>

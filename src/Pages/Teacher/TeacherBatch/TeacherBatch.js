@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { checkTeacherPremiumApi, createBatchApi, getAllBatchApi } from '../../../Api/Teacher/batchApi'
 import Spinner from '../../../components/Spinner'
-import { checkTeacherPremiumApi, createBatchApi, createTeacherPaymentApi, getAllBatchApi } from '../../../Api/Teacher/batchApi'
-import bufferToDataUrl from 'buffer-to-data-url'
+import { deleteBatchApi } from '../../../Api/Admin/BatchApi'
+import { set } from 'react-hook-form'
 
 export const TeacherBatch = (props) => {
 
@@ -59,16 +60,56 @@ export const TeacherBatch = (props) => {
   const handleSubmit = e => {
     e.preventDefault()
     console.log(state)
-
+    setSpin(true)
     createBatchApi({ ...state, teacherId: props.decodedToken._id }).then(data => {
-      console.log(data)
+
       if (data.error) throw data.message
       setMessage({ message: data.message, error: data.error })
+
+      getAllBatchApi({ teacherId: props.decodedToken._id }).then(data => {
+        setSpin(false)
+        if (data.error) throw data.message
+        setBatch([...data.data])
+      }).catch(err => {
+        setSpin(false)
+        console.log(err)
+      })
+
     }).catch(err => {
+      setSpin(false)
       window.alert(err)
       setMessage({ message: err, error: true })
     })
   }
+
+
+
+  const deleteBatch = id => {
+    if (window.confirm('Are you sure you want to?')) {
+
+      setSpin(true)
+      deleteBatchApi(id).then(data => {
+
+        if (data.error) throw data.message
+
+        getAllBatchApi({ teacherId: props.decodedToken._id }).then(data => {
+          setSpin(false)
+          if (data.error) throw data.message
+          setBatch([])
+        }).catch(err => {
+          console.log(err)
+          setBatch([])
+        })
+
+      })
+        .catch(err => {
+          setSpin(false)
+          window.alert(err)
+      })
+    }
+  }
+
+
 
 
   let batchShow
@@ -77,7 +118,7 @@ export const TeacherBatch = (props) => {
   else {
     batchShow = batch.map((item, index) => {
       return (
-        <div key={index} className='border p-3 mb-3 rounded shadow hover:shadow-lg'>
+        <div key={index} className='border p-3 mb-3 rounded-lg bg-slate-50 shadow hover:shadow-lg'>
 
           <div className='grid grid-cols-12'>
             <div className='col-span-12 md:col-span-4 flex flex-column justify-center p-3'>
@@ -87,11 +128,13 @@ export const TeacherBatch = (props) => {
             <div className='col-span-12 md:col-span-8'>
 
               <div className='text-xl font-bold mb-5'>{item.title}</div>
-              <div className='text-lg'><strong className='me-3'>Teacher: </strong>{item.teacherId.username}</div>
+              <div className='text-lg'><strong>Start Date: </strong> {new Date(item.startDate).toLocaleString('en-US', { hour12: true, timeZone: 'Asia/Dhaka' })}</div>
+              <div className='text-lg'><strong>Description: </strong>{item.description}</div>
 
               <div className='mt-5'>
-                <Link to={'https://' + item.classLink} target='_blank' className='btn btn-info me-5'>Join Class</Link>
-                <Link to={'dashboard/' + item._id} className='btn btn-success'>Dashboard</Link>
+                <Link to={'https://' + item.classLink} target='_blank' className='btn btn-info me-3'>Join Class</Link>
+                <Link to={'dashboard/' + item._id} className='btn btn-success me-3'>Dashboard</Link>
+                <Link onClick={() => deleteBatch(item._id)} className='btn btn-error me-3'>Delete</Link>
               </div>
             </div>
           </div>

@@ -25,7 +25,6 @@ export const StudentPrivateRouter = ({ children, authenticated, decodedToken, ..
                 <div className='md:hidden px-2'>
                     <span onClick={() => setOpen(!open)} className=' text-red-800 border border-red-800 p-2 cursor-pointer rounded'>
                         <FontAwesomeIcon className='fas fa-2xl' icon={open ? faCaretUp : faCaretDown} />
-
                     </span>
                 </div>
                 <div className={`m-2 py-4  bg-red-100 rounded-lg text-red-800 ${open ? 'block' : 'hidden'}`}>
