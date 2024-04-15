@@ -24,7 +24,7 @@ export const StudentModule = (props) => {
             getAModuleApi(module._id).then(data => {
                 console.log(data)
                 if (data.error) throw data.message
-                setMaterials([...data.data.materials])
+                setMaterials([...data.data.materials].reverse())
             }).catch(err => console.log(err))
 
 

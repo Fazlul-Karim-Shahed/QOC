@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
-import { createSubjectsApi, getSubjectsApi } from '../../../Api/Admin/SubjectApi'
-import { showFile } from '../../../Functions/CustomFunction'
 import { getACurriculumApi } from '../../../Api/Admin/CurriculumApi'
+import { getSubjectsApi } from '../../../Api/Admin/SubjectApi'
+import { showFile } from '../../../Functions/CustomFunction'
 import Spinner from '../../../components/Spinner'
 
 export const TeacherCurriculum = (props) => {
@@ -23,7 +23,7 @@ export const TeacherCurriculum = (props) => {
 
             getACurriculumApi(curriculum._id).then(data => {
                 if (data.error) throw data.message
-                setOutlines([...data.data.outlines])
+                setOutlines([...data.data.outlines].reverse())
             })
 
             getSubjectsApi(curriculum._id).then(data => {

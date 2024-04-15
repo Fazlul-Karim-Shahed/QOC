@@ -1,15 +1,12 @@
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
-import { createSubjectsApi, deleteSubjectApi, getSubjectsApi } from '../../../Api/Admin/SubjectApi'
-import bufferToDataUrl from 'buffer-to-data-url'
-import { getAllExamApi } from '../../../Api/Admin/ExamApi'
-import { showFile } from '../../../Functions/CustomFunction'
-import axios from 'axios'
 import { addCurriculumOutlineApi, getACurriculumApi, removeCurriculumOutlineApi } from '../../../Api/Admin/CurriculumApi'
+import { createSubjectsApi, deleteSubjectApi, getSubjectsApi } from '../../../Api/Admin/SubjectApi'
+import { showFile } from '../../../Functions/CustomFunction'
 import Spinner from '../../../components/Spinner'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 
 export const Curriculum = (props) => {
 
@@ -33,7 +30,7 @@ export const Curriculum = (props) => {
             setSpin(true)
             getACurriculumApi(curriculum._id).then(data => {
                 if (data.error) throw data.message
-                setOutlines([...data.data.outlines])
+                setOutlines([...data.data.outlines].reverse())
             })
 
             getSubjectsApi(curriculum._id).then(data => {
@@ -72,7 +69,7 @@ export const Curriculum = (props) => {
 
             })
             window.alert(data.message)
-            
+
         })
             .catch(err => {
                 window.alert(err.data)
@@ -80,24 +77,24 @@ export const Curriculum = (props) => {
     }
 
     const deleteSubject = id => {
-    
+
         if (window.confirm("Along with subject deletion, all data (Module, Exam, Mcqs, Broadquestions, Resources etc.) in database dependent on it will be deleted. Are you want to procced?")) {
 
             setSpin(true)
-        deleteSubjectApi(id).then(data => {
+            deleteSubjectApi(id).then(data => {
 
-            getSubjectsApi(location.state.curriculum._id).then(data => {
-                setSpin(false)
-                if (data.error) throw data.message
-                setSubject([...data.data])
-            }).catch(err => {
+                getSubjectsApi(location.state.curriculum._id).then(data => {
+                    setSpin(false)
+                    if (data.error) throw data.message
+                    setSubject([...data.data])
+                }).catch(err => {
 
+                })
+                window.alert(data.message)
             })
-            window.alert(data.message)
-        })
         }
-    
-  }
+
+    }
 
 
     let subjectShow
@@ -111,7 +108,7 @@ export const Curriculum = (props) => {
                     <Link to='/admin-dashboard/subject' state={{ subject: item }}>
                         <div className="card-body items-center">
                             <div className="card-title text-center">{item.subject}</div>
-                    </div>
+                        </div>
                     </Link>
                     <div onClick={() => deleteSubject(item._id)} className="btn btn-ghost">delete Chapter</div>
                 </div>
@@ -123,11 +120,11 @@ export const Curriculum = (props) => {
     const removeOutline = (position) => {
         setSpin(true)
         removeCurriculumOutlineApi(location.state.curriculum._id, position).then(data => {
-            
+
             getACurriculumApi(location.state.curriculum._id).then(data => {
                 setSpin(false)
                 if (data.error) throw data.message
-                setOutlines([...data.data.outlines])
+                setOutlines([...data.data.outlines].reverse())
             })
             window.alert(data.message)
         })
@@ -141,7 +138,7 @@ export const Curriculum = (props) => {
             getACurriculumApi(location.state.curriculum._id).then(data => {
                 setSpin(false)
                 if (data.error) throw data.message
-                setOutlines([...data.data.outlines])
+                setOutlines([...data.data.outlines].reverse())
             })
             window.alert(data.message)
         })

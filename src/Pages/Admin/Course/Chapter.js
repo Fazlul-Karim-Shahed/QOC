@@ -46,7 +46,7 @@ export const Chapter = (props) => {
         .then((data) => {
 
           if (data.error) throw data.message;
-          setMaterials([...data.data.materials]);
+          setMaterials([...data.data.materials].reverse());
         })
         .catch((err) => { });
 
@@ -164,10 +164,10 @@ export const Chapter = (props) => {
         .then((data) => {
           setSpin(false)
           if (data.error) throw data.message;
-          setMaterials([...data.data.materials]);
+          setMaterials([...data.data.materials].reverse());
         })
         .catch((err) => { });
-      
+
       window.alert(data.message);
     });
   };
@@ -180,7 +180,7 @@ export const Chapter = (props) => {
         .then((data) => {
           setSpin(false)
           if (data.error) throw data.message;
-          setMaterials([...data.data.materials]);
+          setMaterials([...data.data.materials].reverse());
         })
         .catch((err) => { });
       window.alert(data.message);
@@ -219,7 +219,7 @@ export const Chapter = (props) => {
 
     setSpin(true);
     createFocusApi({ ...focusState, subjectId: location.state.chapter.subjectId._id, curriculumId: location.state.chapter.curriculumId._id, chapterId: location.state.chapter._id }).then(data => {
-       //
+      //
       getFocusApi({ chapterId: location.state.chapter._id }).then((data) => {
         setSpin(false);
         if (data.error) throw data.message;

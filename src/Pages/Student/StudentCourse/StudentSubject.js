@@ -33,8 +33,8 @@ export const StudentSubject = (props) => {
             setSpin(true)
             getASubjectsApi(subject._id).then(data => {
                 if (data.error) throw data.message
-                setOutlines([...data.data.outlines])
-                setMaterials([...data.data.materials])
+                setOutlines([...data.data.outlines].reverse())
+                setMaterials([...data.data.materials].reverse())
             }).catch(err => console.log(err))
 
 

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
-import { createModuleApi, getModulesApi } from '../../../Api/Admin/ModuleApi'
-import bufferToDataUrl from 'buffer-to-data-url'
-import { showFile } from '../../../Functions/CustomFunction'
 import { getAChapterApi } from '../../../Api/Admin/ChapterApi'
 import { getAllExamApi } from '../../../Api/Admin/ExamApi'
+import { getModulesApi } from '../../../Api/Admin/ModuleApi'
+import { showFile } from '../../../Functions/CustomFunction'
 import Spinner from '../../../components/Spinner'
 
 
@@ -29,7 +28,7 @@ export const TeacherChapter = (props) => {
             getAChapterApi(chapter._id).then(data => {
                 console.log(data)
                 if (data.error) throw data.message
-                setMaterials([...data.data.materials])
+                setMaterials([...data.data.materials].reverse())
             }).catch(err => console.log(err))
 
 

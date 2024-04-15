@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
-import { getSubjectsApi } from '../../../Api/Admin/SubjectApi'
-import bufferToDataUrl from 'buffer-to-data-url'
-import { showFile } from '../../../Functions/CustomFunction'
 import { getACurriculumApi } from '../../../Api/Admin/CurriculumApi'
+import { getSubjectsApi } from '../../../Api/Admin/SubjectApi'
+import { showFile } from '../../../Functions/CustomFunction'
 import Spinner from '../../../components/Spinner'
 
 export const StudentCurriculum = (props) => {
@@ -26,13 +25,13 @@ export const StudentCurriculum = (props) => {
                 console.log(!data.data)
                 if (!data.data) throw data.message
                 else {
-                    setOutlines([...data.data.outlines])
+                    setOutlines([...data.data.outlines].reverse())
                     setCurriculumName(data.data.curriculum)
                 }
             }).catch(err => window.alert(err))
 
             getSubjectsApi(curriculum).then(data => {
-                
+
                 setSpin(false)
                 if (data.error) throw data.message
                 setSubject([...data.data])
@@ -68,7 +67,7 @@ export const StudentCurriculum = (props) => {
         <div>
 
             <div className='mb-10 text-2xl text-center font-bold'>{curriculumName}</div>
-            <div  className='bg-red-800 p-3 mb-16 text-xl text-center'><span className='text-white rounded'>ALL SUBJECTS</span></div>
+            <div className='bg-red-800 p-3 mb-16 text-xl text-center'><span className='text-white rounded'>ALL SUBJECTS</span></div>
 
 
 

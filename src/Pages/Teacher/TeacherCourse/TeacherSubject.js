@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
-import { createChapterApi, getChaptersApi } from '../../../Api/Admin/ChapterApi'
-import bufferToDataUrl from 'buffer-to-data-url'
-import { getASubjectsApi } from '../../../Api/Admin/SubjectApi'
+import { getChaptersApi } from '../../../Api/Admin/ChapterApi'
 import { getAllExamApi } from '../../../Api/Admin/ExamApi'
+import { getASubjectsApi } from '../../../Api/Admin/SubjectApi'
 import { showFile } from '../../../Functions/CustomFunction'
 import Spinner from '../../../components/Spinner'
 
@@ -31,10 +30,10 @@ export const TeacherSubject = (props) => {
 
             getASubjectsApi(subject._id).then(data => {
 
-                
+
                 if (data.error) throw data.message
-                setOutlines([...data.data.outlines])
-                setMaterials([...data.data.materials])
+                setOutlines([...data.data.outlines].reverse())
+                setMaterials([...data.data.materials].reverse())
             }).catch(err => console.log(err))
 
 

@@ -49,8 +49,8 @@ export const Subject = (props) => {
 
       getASubjectsApi(subject._id).then((data) => {
         if (data.error) throw data.message;
-        setOutlines([...data.data.outlines]);
-        setMaterials([...data.data.materials]);
+        setOutlines([...data.data.outlines].reverse());
+        setMaterials([...data.data.materials].reverse());
       })
         .catch((err) => { });
 
@@ -167,8 +167,8 @@ export const Subject = (props) => {
       getASubjectsApi(location.state.subject._id).then((data) => {
         setSpin(false)
         if (data.error) throw data.message;
-        setOutlines([...data.data.outlines]);
-        setMaterials([...data.data.materials]);
+        setOutlines([...data.data.outlines].reverse());
+        setMaterials([...data.data.materials].reverse());
       })
         .catch((err) => { });
 
@@ -185,8 +185,8 @@ export const Subject = (props) => {
       getASubjectsApi(location.state.subject._id).then((data) => {
         setSpin(false)
         if (data.error) throw data.message;
-        setOutlines([...data.data.outlines]);
-        setMaterials([...data.data.materials]);
+        setOutlines([...data.data.outlines].reverse());
+        setMaterials([...data.data.materials].reverse());
       })
         .catch((err) => { });
 
@@ -201,8 +201,8 @@ export const Subject = (props) => {
       getASubjectsApi(location.state.subject._id).then((data) => {
         setSpin(false)
         if (data.error) throw data.message;
-        setOutlines([...data.data.outlines]);
-        setMaterials([...data.data.materials]);
+        setOutlines([...data.data.outlines].reverse());
+        setMaterials([...data.data.materials].reverse());
       })
         .catch((err) => console.log(err));
       window.alert(data.message);
@@ -217,8 +217,8 @@ export const Subject = (props) => {
       getASubjectsApi(location.state.subject._id).then((data) => {
         setSpin(false)
         if (data.error) throw data.message;
-        setOutlines([...data.data.outlines]);
-        setMaterials([...data.data.materials]);
+        setOutlines([...data.data.outlines].reverse());
+        setMaterials([...data.data.materials].reverse());
       })
         .catch((err) => console.log(err));
       window.alert(data.message);
