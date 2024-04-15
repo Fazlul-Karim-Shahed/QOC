@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { approveTuitionApi, confirmTuitionApi, getAllTuitionApi, updateTuitionApi } from '../../../Api/Admin/TuitionApi'
+import { approveTuitionApi, confirmTuitionApi, deleteTuitionApi, getAllTuitionApi, updateTuitionApi } from '../../../Api/Admin/TuitionApi'
 
 
 const mapStateToProps = (state) => ({})
@@ -112,7 +112,26 @@ export const TuitionAdmin = (props) => {
       console.log(data)
       document.getElementById('updateTuitionModal').close()
     })
-   }
+  }
+  
+  const deleteTuition = id => {
+
+    if (window.confirm("Are you sure to delete this tuition ?")) {
+      deleteTuitionApi(id).then(data => {
+        if (data.error) throw data.message
+
+        getAllTuitionApi().then(data => {
+          if (data.error) throw data.error
+          setTuition([...data.data])
+
+        }).catch(err => { setTuition([]) })
+
+
+
+      }).catch(err => window.alert(err))
+    }
+
+  }
 
   
 
@@ -140,9 +159,10 @@ export const TuitionAdmin = (props) => {
 
           <div className='mt-5'>
 
-            <div className='btn btn-warning btn-sm me-3' onClick={() => updateTuition(item)}>Edit</div>
-            <div className='btn btn-success me-3 btn-sm' onClick={() => approve(item._id)}>{item.approved ? 'Approved' : 'Approve'}</div>
-            <div className='btn btn-warning btn-sm me-3' onClick={() => assignTeacherModal(item)}>{item.confirmed ? 'Confirmed' : 'Assign Teacher'}</div>
+            <div className='btn btn-warning btn-sm m-1' onClick={() => updateTuition(item)}>Edit</div>
+            <div className='btn btn-success m-1 btn-sm' onClick={() => approve(item._id)}>{item.approved ? 'Approved' : 'Approve'}</div>
+            <div className='btn btn-warning btn-sm m-1' onClick={() => assignTeacherModal(item)}>{item.confirmed ? 'Confirmed' : 'Assign Teacher'}</div>
+            <div className='btn btn-error btn-sm m-1' onClick={() => deleteTuition(item._id)}>Delete</div>
 
           </div>
         </div>

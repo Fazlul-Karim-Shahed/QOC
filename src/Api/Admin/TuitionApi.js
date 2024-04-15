@@ -63,3 +63,20 @@ export const updateTuitionApi = async (TuitionId, obj) => {
     return Tuition
 
 }
+
+
+
+export const deleteTuitionApi = async (id) => {
+
+    let Tuition = axios.delete(process.env.REACT_APP_BACKEND_URL + '/api/tuition/' + id, {
+        headers: {
+            Authorization: window.localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),
+        }
+    }).then(data => data.data).catch(err => {
+        return { message: `Something went wrong. - (${err.message}). Try again`, error: true }
+    })
+
+
+    return Tuition
+
+}
