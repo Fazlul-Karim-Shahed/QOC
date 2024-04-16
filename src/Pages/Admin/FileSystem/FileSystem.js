@@ -47,15 +47,22 @@ export const FileSystem = (props) => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
                 <div className='p-5'>
-                    <div className=" mb-3"> <span className='font-bold'>Database </span> ( Your current uploaded files ) </div>
+                    <div className=" mb-3">
+                        <div><span className='font-bold'>Database </span> ( Your current uploaded files )</div>
+                        <div className=' text-xs mt-2 italic'>Delete Red marked files from respective sections and re-upload.</div>
+                    </div>
+                    
                     <div className='border shadow'>
                         {filesInDatabase.map(item => {
-                            return <div className='p-2 text-center border-b hover:bg-slate-50'>{item}</div>
+                            return <div className={`p-2 text-center border-b hover:bg-slate-50 ${!allFiles.includes(item) && "text-error" }`}>{item}</div>
                         })}
                     </div>
                 </div>
                 <div className=' p-5'>
-                    <div className="mb-3"> <span className='font-bold '>Server</span> ( All backup files ) </div>
+                    <div className="mb-3">
+                        <div><span className='font-bold '>Server</span> ( All backup files )</div>
+                        <div className=' text-xs mt-2 italic'>Delete unnecessary files (Red marked) to prevent memory wastage.</div>
+                    </div>
                     <div className='border shadow'>
                         {allFiles.map(item => {
                             return <div className={`p-2 text-center border-b hover:bg-slate-50 ${!filesInDatabase.includes(item) ? 'text-error font-bold bg-red-50' : ''}`}>{item} {!filesInDatabase.includes(item) && <FontAwesomeIcon className='ms-3' onClick={()=>deleteFile(item)} icon={faTrash} /> } </div>
