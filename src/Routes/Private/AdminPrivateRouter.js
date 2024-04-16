@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Link, Outlet } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBell, faBook, faBookOpenReader, faCaretDown, faCaretUp, faChalkboardUser, faCircleDollarToSlot, faCircleInfo, faClock, faCoins, faDatabase, faFilePen, faHandHoldingHand, faUserGroup } from '@fortawesome/free-solid-svg-icons'
+import { faBell, faBook, faBookOpenReader, faCaretDown, faCaretUp, faChalkboardUser, faCircleDollarToSlot, faCircleInfo, faClock, faCoins, faDatabase, faFile, faFilePen, faHandHoldingHand, faUserGroup } from '@fortawesome/free-solid-svg-icons'
 
 const mapStateToProps = (state) => {
     return {
@@ -43,6 +43,7 @@ export const AdminPrivateRouter = ({ children, authenticated, decodedToken, ...r
                     <Link onClick={() => setOpen(!open)} to='/admin-dashboard/resource' className='block m-4 hover:underline'> <FontAwesomeIcon icon={faCoins} className='fas fa-lg me-4' />Resource</Link>
                     <Link onClick={() => setOpen(!open)} to='/admin-dashboard/demo-class' className='block m-4 hover:underline'> <FontAwesomeIcon icon={faBookOpenReader} className='fas fa-lg me-4' />Demo Class</Link>
                     <Link onClick={() => setOpen(!open)} to='/admin-dashboard/transaction' className='block m-4 hover:underline'> <FontAwesomeIcon icon={faCircleDollarToSlot} className='fas fa-lg me-4' />Transactions</Link>
+                    <Link onClick={() => setOpen(!open)} to='/admin-dashboard/file-system' className='block m-4 hover:underline'> <FontAwesomeIcon icon={faFile} className='fas fa-lg me-4' />File System</Link>
                 </div>
             </div>
 
@@ -62,6 +63,7 @@ export const AdminPrivateRouter = ({ children, authenticated, decodedToken, ...r
                     <Link to='/admin-dashboard/resource' className='block m-4 hover:underline'> <FontAwesomeIcon icon={faCoins} className='fas fa-lg me-4' />Resource</Link>
                     <Link to='/admin-dashboard/demo-class' className='block m-4 hover:underline'> <FontAwesomeIcon icon={faBookOpenReader} className='fas fa-lg me-4' />Demo Class</Link>
                     <Link to='/admin-dashboard/transaction' className='block m-4 hover:underline'> <FontAwesomeIcon icon={faCircleDollarToSlot} className='fas fa-lg me-4' />Transactions</Link>
+                    <Link to='/admin-dashboard/file-system' className='block m-4 hover:underline'> <FontAwesomeIcon icon={faFile} className='fas fa-lg me-4' />File System</Link>
                 </div>
                 <div className='col-span-12 md:col-span-10 my-10 p-3 mx-0'> <Outlet /></div>
 

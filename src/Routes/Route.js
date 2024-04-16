@@ -1,75 +1,76 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../Pages/Home/Home";
 import Main from "../Layout/Main/Main";
-import SignUp from "../Pages/SignUp/SignUp";
-import Login from "../Pages/Login/Login";
-import Lesson from "../Pages/Lesson/Lesson";
-import Logout from "../Pages/Logout/Logout";
-import TeacherPrivateRouter from "./Private/TeacherPrivateRouter";
+import About from "../Pages/About/About";
 import AdminDashboard from "../Pages/Admin/AdminDashboard/AdminDashboard";
-import TeacherDashboard from "../Pages/Teacher/TeacherDashboard/TeacherDashboard";
-import StudentDashboard from "../Pages/Student/StudentDashboard/StudentDashboard";
-import AdminPrivateRouter from "./Private/AdminPrivateRouter";
-import StudentPrivateRouter from "./Private/StudentPrivateRouter";
-import TuitionAdmin from "../Pages/Admin/Tuition/TuitionAdmin";
-import Exam from "../Pages/Admin/Exam/Exam";
-import Teacher from "../Pages/Admin/Teacher/Teacher";
-import Student from "../Pages/Admin/Student/Student";
-import Batch from '../Pages/Student/Batch/Batch'
-import Tutor from '../Pages/Student/Tutor/Tutor'
-import CreateTuition from '../Pages/Student/Tuition/CreateTuition'
-import TuitionTeacher from "../Pages/Teacher/Tuition/TuitionTeacher";
-import FindTuition from "../Pages/FindTuition/FindTuition";
-import Course from "../Pages/Admin/Course/Course";
-import Curriculum from "../Pages/Admin/Course/Curriculum";
-import Subject from "../Pages/Admin/Course/Subject";
-import Chapter from "../Pages/Admin/Course/Chapter";
-import Module from "../Pages/Admin/Course/Module";
-import StudentCourse from "../Pages/Student/StudentCourse/StudentCourse";
-import StudentCurriculum from "../Pages/Student/StudentCourse/StudentCurriculum";
-import StudentSubject from "../Pages/Student/StudentCourse/StudentSubject";
-import StudentModule from "../Pages/Student/StudentCourse/StudentModule";
-import StudentChapter from "../Pages/Student/StudentCourse/StudentChapter";
-import TeacherCourse from "../Pages/Teacher/TeacherCourse/TeacherCourse";
-import TeacherCurriculum from "../Pages/Teacher/TeacherCourse/TeacherCurriculum";
-import TeacherSubject from "../Pages/Teacher/TeacherCourse/TeacherSubject";
-import TeacherChapter from "../Pages/Teacher/TeacherCourse/TeacherChapter";
-import TeacherModule from "../Pages/Teacher/TeacherCourse/TeacherModule";
-import Mcq from "../Pages/Admin/Mcq/Mcq";
-import BroadQuestion from "../Pages/Admin/BroadQuestion/BroadQuestion";
-import StudentAllExam from "../Pages/Student/StudentExam/StudentAllExam";
-import StudentExam from "../Pages/Student/StudentExam/StudentExam";
-import ExamDetails from "../Pages/Admin/Exam/ExamDetails";
-import AssignmentStudent from "../Pages/Student/Assignment/Assignment";
-import Success from "../Pages/Payment/Success";
-import Cancel from "../Pages/Payment/Cancel";
-import Fail from "../Pages/Payment/Fail";
-import Assignment from "../Pages/Admin/Assignment/Assignment";
-import TeacherBatch from "../Pages/Teacher/TeacherBatch/TeacherBatch";
-import MyBatch from "../Pages/Student/Batch/MyBatch";
-import BatchDashboard from "../Pages/Student/Batch/BatchDashboard";
-import TeacherBatchDashboard from "../Pages/Teacher/TeacherBatch/TeacherBatchDashboard";
-import AdminBatch from "../Pages/Admin/Batch/AdminBatch";
-import AdminBatchDashboard from "../Pages/Admin/Batch/AdminBatchDashboard";
-import BatchPaperSolution from "../Pages/Student/BatchPaperSolution/BatchPaperSolution";
-import AdminResource from "../Pages/Admin/AdminResource/AdminResource";
-import Resource from "../Pages/Resource/Resource";
-import Payment from "../Pages/Student/Payment/Payment";
-import Transaction from "../Pages/Admin/Transaction/Transaction";
-import UpcomingCourse from "../Pages/Admin/UpcomingCourse/UpcomingCourse";
-import History from "../Pages/Student/History";
-import TeacherPayment from "../Pages/Teacher/TeacherPayment/TeacherPayment";
-import RequestDemo from "../Pages/RerquestDemo/RequestDemo";
 import AdminDemoClass from "../Pages/Admin/AdminDemoClass/AdminDemoClass";
 import AdminNotice from "../Pages/Admin/AdminNotice/AdminNotice";
-import About from "../Pages/About/About";
-import GetInTouch from "../Pages/GetInTouch/GetInTouch";
-import FAQ from "../Pages/FAQ/FAQ";
-import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy";
+import AdminResource from "../Pages/Admin/AdminResource/AdminResource";
+import Assignment from "../Pages/Admin/Assignment/Assignment";
+import AdminBatch from "../Pages/Admin/Batch/AdminBatch";
+import AdminBatchDashboard from "../Pages/Admin/Batch/AdminBatchDashboard";
+import BroadQuestion from "../Pages/Admin/BroadQuestion/BroadQuestion";
+import Chapter from "../Pages/Admin/Course/Chapter";
+import Course from "../Pages/Admin/Course/Course";
+import Curriculum from "../Pages/Admin/Course/Curriculum";
+import Module from "../Pages/Admin/Course/Module";
+import Subject from "../Pages/Admin/Course/Subject";
+import Exam from "../Pages/Admin/Exam/Exam";
+import ExamDetails from "../Pages/Admin/Exam/ExamDetails";
+import FileSystem from "../Pages/Admin/FileSystem/FileSystem";
+import Mcq from "../Pages/Admin/Mcq/Mcq";
+import Student from "../Pages/Admin/Student/Student";
+import Teacher from "../Pages/Admin/Teacher/Teacher";
+import Transaction from "../Pages/Admin/Transaction/Transaction";
+import TuitionAdmin from "../Pages/Admin/Tuition/TuitionAdmin";
+import UpcomingCourse from "../Pages/Admin/UpcomingCourse/UpcomingCourse";
 import Cookies from "../Pages/Cookies/Cookies";
-import TermsConditions from "../Pages/TermsCondition/TermsConditions";
+import FAQ from "../Pages/FAQ/FAQ";
+import FindTuition from "../Pages/FindTuition/FindTuition";
 import FindTutors from "../Pages/FindTutors/FindTutors";
 import TutorDetails from "../Pages/FindTutors/TutorDetails";
+import GetInTouch from "../Pages/GetInTouch/GetInTouch";
+import Home from "../Pages/Home/Home";
+import Lesson from "../Pages/Lesson/Lesson";
+import Login from "../Pages/Login/Login";
+import Logout from "../Pages/Logout/Logout";
+import Cancel from "../Pages/Payment/Cancel";
+import Fail from "../Pages/Payment/Fail";
+import Success from "../Pages/Payment/Success";
+import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy";
+import RequestDemo from "../Pages/RerquestDemo/RequestDemo";
+import Resource from "../Pages/Resource/Resource";
+import SignUp from "../Pages/SignUp/SignUp";
+import AssignmentStudent from "../Pages/Student/Assignment/Assignment";
+import Batch from '../Pages/Student/Batch/Batch';
+import BatchDashboard from "../Pages/Student/Batch/BatchDashboard";
+import MyBatch from "../Pages/Student/Batch/MyBatch";
+import BatchPaperSolution from "../Pages/Student/BatchPaperSolution/BatchPaperSolution";
+import History from "../Pages/Student/History";
+import Payment from "../Pages/Student/Payment/Payment";
+import StudentChapter from "../Pages/Student/StudentCourse/StudentChapter";
+import StudentCourse from "../Pages/Student/StudentCourse/StudentCourse";
+import StudentCurriculum from "../Pages/Student/StudentCourse/StudentCurriculum";
+import StudentModule from "../Pages/Student/StudentCourse/StudentModule";
+import StudentSubject from "../Pages/Student/StudentCourse/StudentSubject";
+import StudentDashboard from "../Pages/Student/StudentDashboard/StudentDashboard";
+import StudentAllExam from "../Pages/Student/StudentExam/StudentAllExam";
+import StudentExam from "../Pages/Student/StudentExam/StudentExam";
+import CreateTuition from '../Pages/Student/Tuition/CreateTuition';
+import Tutor from '../Pages/Student/Tutor/Tutor';
+import TeacherBatch from "../Pages/Teacher/TeacherBatch/TeacherBatch";
+import TeacherBatchDashboard from "../Pages/Teacher/TeacherBatch/TeacherBatchDashboard";
+import TeacherChapter from "../Pages/Teacher/TeacherCourse/TeacherChapter";
+import TeacherCourse from "../Pages/Teacher/TeacherCourse/TeacherCourse";
+import TeacherCurriculum from "../Pages/Teacher/TeacherCourse/TeacherCurriculum";
+import TeacherModule from "../Pages/Teacher/TeacherCourse/TeacherModule";
+import TeacherSubject from "../Pages/Teacher/TeacherCourse/TeacherSubject";
+import TeacherDashboard from "../Pages/Teacher/TeacherDashboard/TeacherDashboard";
+import TeacherPayment from "../Pages/Teacher/TeacherPayment/TeacherPayment";
+import TuitionTeacher from "../Pages/Teacher/Tuition/TuitionTeacher";
+import TermsConditions from "../Pages/TermsCondition/TermsConditions";
+import AdminPrivateRouter from "./Private/AdminPrivateRouter";
+import StudentPrivateRouter from "./Private/StudentPrivateRouter";
+import TeacherPrivateRouter from "./Private/TeacherPrivateRouter";
 
 
 
@@ -206,6 +207,11 @@ export const router = createBrowserRouter([
           path: "module",
           element: <Module />,
         },
+        {
+          path: "file-system",
+          element: <FileSystem />,
+        },
+
 
         {
           path: "mcq",
@@ -234,23 +240,23 @@ export const router = createBrowserRouter([
         {
           path: "resource",
           element: <AdminResource />,
-          },
-          {
-            path: "demo-class",
-            element: <AdminDemoClass />,
-          },
+        },
+        {
+          path: "demo-class",
+          element: <AdminDemoClass />,
+        },
         {
           path: "transaction",
           element: <Transaction />,
-          },
-          {
-            path: "upcoming-course",
-            element: <UpcomingCourse />,
-          },
-          {
-            path: "notice",
-            element: <AdminNotice />,
-          },
+        },
+        {
+          path: "upcoming-course",
+          element: <UpcomingCourse />,
+        },
+        {
+          path: "notice",
+          element: <AdminNotice />,
+        },
         ]
       },
 
